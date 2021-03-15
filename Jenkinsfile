@@ -1,19 +1,27 @@
 pipeline {
-    // master executor should be set to 0
     agent any
     stages {
-        stage('Run Test') {
+
+        stage('Start Grid') {
             steps {
                 //sh
-                bat "docker-compose up"
+                bat "docker-compose up -d hub chrome firefox --no-color"
             }
         }
 
-        stage('Bring Grid Down') {
+        stage('Run Test') {
             steps {
                 //sh
-                bat "docker-compose down"
+                //no-color option will get rid of color codes showing in console log
+                bat "docker-compose up bdd --no-color"
             }
         } 
+    }
+    post{
+        always{
+            archiveArtifacts artifacts: 'C:\Users\ryanchen\WorkSpaces\LogixPanel\test-result\**'
+            //sh
+            bat "docker-compose down --no-color"
+        }
     }
 }
