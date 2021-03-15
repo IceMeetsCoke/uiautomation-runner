@@ -5,7 +5,7 @@ pipeline {
         stage('Start Grid') {
             steps {
                 //sh
-                bat "docker-compose up -d hub chrome firefox --no-color"
+                bat "docker-compose up -d hub chrome firefox"
             }
         }
 
@@ -13,15 +13,15 @@ pipeline {
             steps {
                 //sh
                 //no-color option will get rid of color codes showing in console log
-                bat "docker-compose up bdd --no-color"
+                bat "docker-compose up bdd"
             }
         } 
     }
     post{
         always{
-            archiveArtifacts artifacts: 'C:/Users/ryanchen/WorkSpaces/LogixPanel/test-result/**'
+            archiveArtifacts artifacts: "C:/Users/ryanchen/WorkSpaces/LogixPanel/test-result/**"
             //sh
-            bat "docker-compose down --no-color"
+            bat "docker-compose down"
         }
     }
 }
