@@ -19,7 +19,7 @@ pipeline {
     }
     post{
         always{
-            archiveArtifacts artifacts: '**/test-result/*.html'
+            archiveArtifacts artifacts: 'C:\Users\ryanchen\WorkSpaces\LogixPanel\test-result\*'
             //sh
             bat "docker-compose down"
         }
