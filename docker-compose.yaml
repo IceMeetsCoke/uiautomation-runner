@@ -7,7 +7,7 @@ services:
 
 
   chrome:
-    image: selenium/node-chrome:latest
+    image: selenium/node-chrome:89.0
     depends_on: 
       - hub
     environment: 
