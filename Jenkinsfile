@@ -5,7 +5,7 @@ pipeline {
         stage('Start Grid') {
             steps {
                 //sh
-                bat "docker compose up -d hub chrome firefox"
+                bat "docker-compose up -d hub chrome firefox"
             }
         }
 
@@ -13,7 +13,7 @@ pipeline {
             steps {
                 //sh
                 //no-color option will get rid of color codes showing in console log
-                bat "docker compose up bdd"
+                bat "docker-compose up bdd"
             }
         } 
     }
@@ -21,7 +21,7 @@ pipeline {
         always{
             // archiveArtifacts artifacts: 'target/*.html'
             //sh
-            bat "docker compose down"
+            bat "docker-compose down"
         }
     }
 }
