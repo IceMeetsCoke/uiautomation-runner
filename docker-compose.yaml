@@ -1,13 +1,13 @@
 version: "3"
 services: 
   hub:
-    image: selenium/hub:latest
+    image: selenium/hub:4.0.0-beta-3-prerelease-20210422
     ports: 
       - "4444:4444"
 
 
   chrome:
-    image: selenium/node-chrome:latest
+    image: selenium/node-chrome:4.0.0-beta-3-prerelease-20210422
     depends_on: 
       - hub
     environment: 
@@ -19,11 +19,13 @@ services:
 
 
   firefox:
-    image: selenium/node-firefox:latest
+    image: selenium/node-firefox:4.0.0-beta-3-prerelease-20210422
     depends_on: 
       - hub
     environment: 
       - HUB_HOST=hub
+    volumes:
+      - /dev/shm:/dev/shm
 
 
   bdd:
