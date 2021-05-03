@@ -12,10 +12,11 @@ services:
       - hub
     environment: 
       - HUB_HOST=hub
+    shm_size: '2gb'
 
-#   Below volumn command resolves the tab crash issue in linux system     
-    volumes:
-      - /dev/shm:/dev/shm
+    #   Below volumn command resolves the tab crash issue in linux system     
+
+
 
 
   firefox:
@@ -24,8 +25,7 @@ services:
       - hub
     environment: 
       - HUB_HOST=hub
-    volumes:
-      - /dev/shm:/dev/shm
+    shm_size: '2gb'
 
 
   bdd:
